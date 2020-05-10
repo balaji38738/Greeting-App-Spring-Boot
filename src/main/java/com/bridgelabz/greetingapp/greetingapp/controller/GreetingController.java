@@ -13,7 +13,12 @@ public class GreetingController {
     IGreetingService greetingService;
 
     @GetMapping("/home")
-    public ResponseEntity getWelcomeMessage() {
-        return new ResponseEntity(greetingService.getFirstGreeting(), HttpStatus.OK);
+    public ResponseEntity<String> welcomeMessage() {
+        return new ResponseEntity<>(greetingService.getFirstGreeting(), HttpStatus.OK);
+    }
+
+    @GetMapping("/home/helloworld")
+    public ResponseEntity<String> helloWorld() {
+        return new ResponseEntity<>(greetingService.getHelloMessage(), HttpStatus.OK);
     }
 }

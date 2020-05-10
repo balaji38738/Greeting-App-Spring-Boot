@@ -7,4 +7,8 @@ public class GreetingService implements IGreetingService{
     public String getFirstGreeting() {
         return "Greetings app home";
     }
+
+    public String getHelloMessage() {
+        return "Hello, world!";
+    }
 }
