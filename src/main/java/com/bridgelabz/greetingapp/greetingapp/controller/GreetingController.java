@@ -30,4 +30,9 @@ public class GreetingController {
     public ResponseEntity<GreetingMessage> customGreeting(@RequestBody UserDetails userDetails) {
         return new ResponseEntity<>(greetingService.getCustomGreeting(userDetails), HttpStatus.OK);
     }
+
+    @PostMapping("home/savegreeting")
+    public void saveGreeting(@RequestBody GreetingMessage greetingMessage) {
+        greetingService.saveGreetingInRepo(greetingMessage);
+    }
 }
