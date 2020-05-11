@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,23 +21,33 @@ public class GreetingController {
         return new ResponseEntity<>(greetingService.getFirstGreeting(), HttpStatus.OK);
     }
 
-    @GetMapping("/home/helloworld")
+    @GetMapping("/home/hello-world")
     public ResponseEntity<GreetingMessage> helloWorld() {
         return new ResponseEntity<>(greetingService.getHelloMessage(), HttpStatus.OK);
     }
 
-    @PostMapping("home/customgreeting")
+    @PostMapping("home/custom-greeting")
     public ResponseEntity<GreetingMessage> customGreeting(@RequestBody UserDetails userDetails) {
         return new ResponseEntity<>(greetingService.getCustomGreeting(userDetails), HttpStatus.OK);
     }
 
-    @PostMapping("home/savegreeting")
+    @PostMapping("home/save-greeting")
     public void saveGreeting(@RequestBody GreetingMessage greetingMessage) {
         greetingService.saveGreetingInRepo(greetingMessage);
     }
 
-    @GetMapping("home/findgreeting/{greetingId}")
+    @GetMapping("home/find-greeting/{greetingId}")
     public ResponseEntity<Optional<GreetingMessage>> findGreeting(@PathVariable long greetingId) {
         return new ResponseEntity<>(greetingService.findGreetingInRepo(greetingId), HttpStatus.OK);
+    }
+
+    @GetMapping("home/find-greeting/all")
+    public ResponseEntity<List<GreetingMessage>> allGreetings() {
+        return new ResponseEntity<>(greetingService.getAllGreetings(), HttpStatus.OK);
+    }
+
+    @PostMapping("home/update-greeting")
+    public void updateGreeting(@RequestBody GreetingMessage greetingMessage) {
+        greetingService.updateGreetingRepo(greetingMessage);
     }
 }
