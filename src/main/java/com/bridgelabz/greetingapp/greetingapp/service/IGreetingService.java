@@ -10,4 +10,5 @@ public interface IGreetingService {
     GreetingMessage getHelloMessage();
     GreetingMessage getCustomGreeting(UserDetails userDetails);
     void saveGreetingInRepo(GreetingMessage greetMessage);
+    Optional<GreetingMessage> findGreetingInRepo(long greetingId);
 }

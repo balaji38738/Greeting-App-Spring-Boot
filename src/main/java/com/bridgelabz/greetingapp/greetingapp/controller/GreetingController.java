@@ -6,10 +6,9 @@ import com.bridgelabz.greetingapp.greetingapp.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class GreetingController {
@@ -34,5 +33,10 @@ public class GreetingController {
     @PostMapping("home/savegreeting")
     public void saveGreeting(@RequestBody GreetingMessage greetingMessage) {
         greetingService.saveGreetingInRepo(greetingMessage);
+    }
+
+    @GetMapping("home/findgreeting/{greetingId}")
+    public ResponseEntity<Optional<GreetingMessage>> findGreeting(@PathVariable long greetingId) {
+        return new ResponseEntity<>(greetingService.findGreetingInRepo(greetingId), HttpStatus.OK);
     }
 }

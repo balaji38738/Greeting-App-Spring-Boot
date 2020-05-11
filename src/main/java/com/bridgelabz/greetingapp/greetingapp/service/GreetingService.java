@@ -50,4 +50,9 @@ public class GreetingService implements IGreetingService{
         greetMessage.setId(greetingRepository.count() + 1);
         greetingRepository.save(greetMessage);
     }
+
+    @Override
+    public Optional<GreetingMessage> findGreetingInRepo(long greetingId) {
+        return greetingRepository.findById(greetingId);
+    }
 }
