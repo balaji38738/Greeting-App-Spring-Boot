@@ -13,4 +13,5 @@ public interface IGreetingService {
     Optional<GreetingMessage> findGreetingInRepo(long greetingId);
     List<GreetingMessage> getAllGreetings();
     void updateGreetingRepo(GreetingMessage greetMessage);
+    void deleteGreetingFromRepo(long id);
 }

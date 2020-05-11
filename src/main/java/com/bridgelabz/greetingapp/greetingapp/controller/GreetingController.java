@@ -50,4 +50,9 @@ public class GreetingController {
     public void updateGreeting(@RequestBody GreetingMessage greetingMessage) {
         greetingService.updateGreetingRepo(greetingMessage);
     }
+
+    @DeleteMapping("home/delete-greeting/{greetingId}")
+    public void deleteGreeting(@PathVariable long greetingId) {
+        greetingService.deleteGreetingFromRepo(greetingId);
+    }
 }

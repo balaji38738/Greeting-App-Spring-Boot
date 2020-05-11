@@ -63,4 +63,8 @@ public class GreetingService implements IGreetingService{
     public void updateGreetingRepo(GreetingMessage greetMessage) {
         greetingRepository.save(greetMessage);
     }
+
+    public void deleteGreetingFromRepo(long greetingId) {
+        greetingRepository.deleteById(greetingId);
+    }
 }
